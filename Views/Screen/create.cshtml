@@ -1,0 +1,19 @@
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="container">
+    <h1>Screen</h1>
+    <h4>Create</h4>
+    <form method="post">
+        <div class="form-group">
+            <label for="InputName">Name</label>
+            <input type="text" name="name" class="form-control" id="InputName" aria-describedby="titleHelp"
+                placeholder="Enter title">
+            <small id="titleHelp" class="form-text text-muted">Provide a title for your screen.</small>
+        </div>
+        <div class="btn-group">
+            <button type="submit" class="btn btn-primary">Proceed</button>
+            @Html.ActionLink("Back to List", "Index",new {}, new {@class="btn btn-primary"})
+        </div>
+    </form>
+</div>

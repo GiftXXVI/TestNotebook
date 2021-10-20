@@ -1,0 +1,50 @@
+@model TestNotebook.Models.Screen
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="container">
+    <h1>Screen</h1>    
+    <h5>@Html.DisplayNameFor(model => model.Name)</h5>
+    <h6 class="text-muted">@Html.DisplayFor(model => model.Name)</h6>
+    
+    <h4>Fields</h4>
+    <div class="card">
+        <div class="card-body">
+            <p>
+                @Html.ActionLink("Create Field", "Create","Field", new {@screenid=Model.Id}, new {@class="btn btn-primary"})
+            </p>
+            <p class="card-text">
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th>
+                    Field
+                </th>
+                <th>Action</th>
+            </tr>
+            @foreach (var item in Model.Fields)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            @Html.ActionLink("Edit","Edit", "Field", new { @id=item.Id,@screenid=item.ScreenId }, new {@class="btn btn-primary"})
+                            @Html.ActionLink("Details", "Details", "Field", new { id=item.Id,@screenid=item.ScreenId }, new {@class="btn btn-primary"})
+                            @Html.ActionLink("Delete", "Delete","Field", new { id=item.Id,@screenid=item.ScreenId }, new {@class="btn btn-primary"})
+                        </div>
+                    </td>
+                </tr>
+            }
+        </table>
+        </p>
+        </div>
+    </div>
+    <br/>
+    <div class="btn-group">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new {@class="btn btn-primary"})
+        @Html.ActionLink("Back to List", "Index",new {}, new {@class="btn btn-primary"})
+    </div>
+</div>

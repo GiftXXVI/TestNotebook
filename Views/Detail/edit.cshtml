@@ -1,0 +1,103 @@
+@model TestNotebook.Models.Detail
+@{
+    ViewData["Title"] = "CreateDetail";
+}
+<div class="container">
+    <h1>Detail</h1>
+    <h4>Create</h4>
+    <form method="post">
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.HeaderId)
+        <div class="form-group">
+            <label for="InputName">Control</label>
+            @Html.DropDownList("controlid", (IEnumerable<SelectListItem>) ViewBag.Controls,"--Select--",new
+            {@class="form-control form-select mb-3", @id="InputControl"})
+            <small id="titleHelp0" class="form-text text-muted">Select a control.</small>
+        </div>
+        <div class="form-group">
+            <label for="InputName">Question</label>
+            @Html.DropDownList("questionid", (IEnumerable<SelectListItem>) ViewBag.Questions,"--Select--",new
+            {@class="form-control form-select mb-3", @id="InputQuestion"})
+            <small id="titleQuestion0" class="form-text text-muted">Select a question.</small>
+        </div>
+
+        <div class="form-group">
+            <label for="InputName">Screen</label>
+            @Html.DropDownList("screenid", (IEnumerable<SelectListItem>) ViewBag.Screens,"--Select--",new
+            {@class="form-control form-select mb-3", @id="InputScreen"})
+            <small id="titleHelp0" class="form-text text-muted">Select a control.</small>
+        </div>
+        <div class="form-group">
+            <label for="InputName">Field</label>
+            @Html.DropDownList("fieldid", (IEnumerable<SelectListItem>) ViewBag.Fields,"--Select--",new
+            {@class="form-control form-select mb-3", @id="InputField"})
+            <small id="titleField0" class="form-text text-muted">Select a question.</small>
+        </div>
+        <div class="form-group">
+            <label for="InputName">Answer Yes/No</label><br />
+            @if(Model.AnswerYN == true){
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="answeryn" id="inlineRadio1" value="true" checked="checked">
+                <label class="form-check-label" for="inlineRadio1">Yes</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="answeryn" id="inlineRadio2" value="false">
+                <label class="form-check-label" for="inlineRadio2">No</label>
+            </div>            
+            }else{
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="answeryn" id="inlineRadio1" value="true">
+                <label class="form-check-label" for="inlineRadio1">Yes</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="answeryn" id="inlineRadio2" value="false" checked="checked">
+                <label class="form-check-label" for="inlineRadio2">No</label>
+            </div>
+            }
+            <small id="titleHelp" class="form-text text-muted">Provide an answer.</small>
+        </div>
+        <div class="form-group">
+            <label for="InputName">Observation</label>
+            <input type="text" name="answertext" class="form-control" id="InputDescription" aria-describedby="titleHelp"
+                placeholder="Enter title" value="@Html.DisplayFor(model => model.AnswerText)">
+            <small id="titleHelp" class="form-text text-muted">Provide an observation.</small>
+        </div>
+        <div class="form-group">
+            <label for="InputName">Result</label>
+            @Html.DropDownList("resultid", (IEnumerable<SelectListItem>) ViewBag.Results,"--Select--",new
+            {@class="form-control form-select mb-3", @id="InputResult"})
+            <small id="titleHelp0" class="form-text text-muted">Select a result.</small>
+        </div>
+        <div class="btn-group">
+            <button type="submit" class="btn btn-primary">Proceed</button>
+            @Html.ActionLink("Back to List", "Details", "Header",new {@id=Model.HeaderId}, new {@class="btn btn-primary"})
+        </div>
+    </form>
+</div>
+
+<script>
+    $(function () {
+        $( "#titleQuestion0" ).text($("#InputQuestion option:selected").text());
+        $( "#titleField0" ).text($("#InputField option:selected").text());
+
+        $('#InputControl').on('change', function () {
+            var val = this.options[this.selectedIndex].text;
+            $('#InputQuestion').prop('selectedIndex', 0);
+            $('#InputQuestion option').hide().filter(function () {
+                return this.text.indexOf(val + ':') === 0;
+            })
+                .show();
+        })
+            .change();
+
+        $('#InputScreen').on('change', function () {
+            var val = this.options[this.selectedIndex].text;
+            $('#InputField').prop('selectedIndex', 0);
+            $('#InputField option').hide().filter(function () {
+                return this.text.indexOf(val + ':') === 0;
+            })
+                .show();
+        })
+            .change();
+    });
+</script>

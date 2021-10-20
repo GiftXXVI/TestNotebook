@@ -1,0 +1,24 @@
+@model TestNotebook.Models.Control
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="container">
+    <h1>Control</h1>
+    <h4>Delete</h4>
+    <h5>Are you sure you want to delete this?</h5>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">@Html.DisplayNameFor(model => model.Name)</h5>
+            <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(model => model.Name)</h6>
+            <p class="card-text">*</p>
+            <form method="post">
+                <div class="btn-group">
+                    <input type="submit" value="Delete" class="btn btn-danger" />
+                    @Html.ActionLink("Back to List", "Index",new {}, new {@class="btn btn-primary"})
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

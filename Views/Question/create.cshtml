@@ -1,0 +1,20 @@
+@{
+    ViewData["Title"] = "CreateQuestion";
+}
+<div class="container">
+    <h1>Question</h1>
+    <h4>Create</h4>
+    <form method="post">
+        @Html.Hidden("controlid", (int)ViewBag.ControlId)
+        <div class="form-group">
+            <label for="InputName">Description</label>
+            <input type="text" name="description" class="form-control" id="InputDescription"
+                aria-describedby="titleHelp" placeholder="Enter title">
+            <small id="titleHelp" class="form-text text-muted">Provide the question.</small>
+        </div>
+        <div class="btn-group">
+            <button type="submit" class="btn btn-primary">Proceed</button>
+            @Html.ActionLink("Back to List", "Details","Control",new {@id=(int)ViewBag.ControlId}, new {@class="btn btn-primary"})
+        </div>
+    </form>
+</div>

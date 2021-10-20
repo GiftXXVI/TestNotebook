@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TestNotebook</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</head>
+@{
+    var controllerName = this.ViewContext.RouteData.Values["controller"].ToString();
+}
+
+<body>
+    <div class="container">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a asp-area="" asp-controller="Home" asp-action="Index"
+                        class='nav-link @(controllerName=="Home"?"active":"")'>Home</a></li>
+                <li class="nav-item"><a asp-area="" asp-controller="Header" asp-action="Index"
+                        class='nav-link @(controllerName=="Header"?"active":"")'>Headers</a></li>
+                <li class="nav-item"><a asp-area="" asp-controller="Control" asp-action="Index"
+                        class='nav-link @(controllerName=="Control"?"active":"")'>Controls</a></li>
+                <li class="nav-item"><a asp-area="" asp-controller="Screen" asp-action="Index"
+                        class='nav-link @(controllerName=="Screen"?"active":"")'>Screens</a></li>
+                <li class="nav-item"><a asp-area="" asp-controller="Result" asp-action="Index"
+                        class='nav-link @(controllerName=="Result"?"active":"")'>Results</a></li>
+            </ul>
+        </header>
+    </div>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - TestNotebook - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
+</body>
+
+</html>

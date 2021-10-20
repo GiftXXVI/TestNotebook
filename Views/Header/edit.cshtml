@@ -1,0 +1,21 @@
+@model TestNotebook.Models.Header
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="container">
+    <h1>Header</h1>
+    <h4>Create</h4>
+    <form method="post">
+        @Html.HiddenFor(model => model.Id)
+        <div class="form-group">
+            <label for="InputTitle">Title</label>
+            <input type="text" name="title" class="form-control" id="InputTitle" aria-describedby="titleHelp"
+                placeholder="Enter title" value="@Html.DisplayFor(model => model.Title)">
+            <small id="titleHelp" class="form-text text-muted">Provide a title for your test session.</small>
+        </div>
+        <div class="btn-group">
+            <button type="submit" class="btn btn-primary">Proceed</button>
+            @Html.ActionLink("Back to List", "Index",new {}, new {@class="btn btn-primary"})
+        </div>
+    </form>
+</div>

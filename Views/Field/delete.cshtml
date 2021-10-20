@@ -1,0 +1,28 @@
+@model TestNotebook.Models.Field
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="container">
+    <h1>Field</h1>
+    <h4>Delete</h4>
+    <h5>Are you sure you want to delete this?</h5>
+    <form method="post">
+        @Html.HiddenFor(model => model.ScreenId)
+        <div class="btn-group">            
+            <input type="submit" value="Delete" class="btn btn-danger" />
+            @Html.ActionLink("Back to List", "Details","Screen",new {@id=Model.ScreenId}, new {@class="btn btn-primary"})
+        </div>
+    </form>
+    <br />
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">@Html.DisplayNameFor(model => model.Name)</h5>
+            <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(model => model.Name)</h6>
+            <h5 class="card-title">@Html.DisplayNameFor(model => model.Screen.Name)</h5>
+            <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(model => model.Screen.Name)</h6>
+            <p class="card-text">*</p>
+        </div>
+    </div>
+</div>

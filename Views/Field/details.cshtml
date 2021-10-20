@@ -1,0 +1,23 @@
+@model TestNotebook.Models.Field
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="container">
+    <h1>Field</h1>
+    <h4>Details</h4>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">@Html.DisplayNameFor(model => model.Name)</h5>
+            <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(model => model.Name)</h6>
+            <h5 class="card-title">@Html.DisplayNameFor(model => model.Screen)</h5>
+            <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(model => model.Screen.Name)</h6>
+            <p class="card-text">*</p>
+            <div class="btn-group">
+                    @Html.ActionLink("Edit", "Edit", new { @id = Model.Id,@screenid=Model.ScreenId }, new {@class="btn btn-primary"})
+                    @Html.ActionLink("Back to List","Details", "Screen",new {@id=Model.ScreenId}, new {@class="btn btn-primary"})
+            </div>
+        </div>
+    </div>
+</div>

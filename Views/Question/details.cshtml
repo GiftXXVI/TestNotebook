@@ -1,0 +1,23 @@
+@model TestNotebook.Models.Question
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="container">
+    <h1>Question</h1>
+    <h4>Details</h4>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">@Html.DisplayNameFor(model => model.Description)</h5>
+            <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(model => model.Description)</h6>
+            <h5 class="card-title">@Html.DisplayNameFor(model => model.Control)</h5>
+            <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(model => model.Control.Name)</h6>
+            <p class="card-text">*</p>
+            <div class="btn-group">
+                    @Html.ActionLink("Edit", "Edit", new { @id = Model.Id, @controlid=Model.ControlId }, new {@class="btn btn-primary"})
+                    @Html.ActionLink("Back to List", "Details","Control",new {@id=Model.ControlId}, new {@class="btn btn-primary"})
+            </div>
+        </div>
+    </div>
+</div>

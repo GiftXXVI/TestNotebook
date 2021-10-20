@@ -1,0 +1,65 @@
+@model TestNotebook.Models.Detail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="container">
+    <h1>Detail</h1>
+    <h4>Details</h4>
+    <h5>Are you sure you want to delete this?</h5>
+    <form method="post" >
+        @Html.HiddenFor(model=>model.HeaderId)
+        <div class="btn-group">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+            @Html.ActionLink("Back to List", "Details", "Header",new {@id=Model.HeaderId}, new {@class="btn btn-primary"})
+        </div>
+    </form>
+    <br/>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">@Html.DisplayFor(model=>model.Header.Title)</h5>
+            <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(model => model.Field.Name)</h6>
+            <p class="card-text">
+            <dl class="dl-horizontal">
+                <dt>
+                        @Html.DisplayNameFor(model => model.Field.Screen):
+                </dt>
+                <dl>
+                        @Html.DisplayFor(model => model.Field.Screen.Name)<br/>
+                </dl>
+                <dt>
+                        @Html.DisplayNameFor(model=>model.Question.Control)
+                </dt>
+                <dl>
+                        @Html.DisplayFor(model=>model.Question.Control.Name)<br/>
+                </dl>
+                <dt>
+                        @Html.DisplayNameFor(model=>model.Question)
+                </dt>
+                <dl>
+                        @Html.DisplayFor(model=>model.Question.Description)<br/>
+                </dl>
+                <dt>
+                        @Html.DisplayNameFor(model=>model.AnswerYN)
+                </dt>
+                <dl>
+                        @Html.DisplayFor(model=>model.AnswerYN)<br/>
+                </dl>
+                <dt>
+                        @Html.DisplayNameFor(model=>model.AnswerText)
+                </dt>
+                <dl>
+                        @Html.DisplayFor(model=>model.AnswerText)<br/>
+                </dl>
+                <dt>
+                        @Html.DisplayNameFor(model=>model.Result)
+                </dt>
+                <dl>
+                        @Html.DisplayFor(model=>model.Result.description)<br />
+                </dl>
+            </dl>    
+            </p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+@model SuccessViewModel
+@{
+    ViewData["Title"] = "Error";
+}
+
+<h1 class="text-success">Completed.</h1>
+<h2 class="text-success">@Model.StatusCode: @Model.StatusMessage</h2>
+<p>
+    <strong>Location:</strong> <code>/@Model.Controller/@Model.Action</code>
+</p>
+@if (Model.Controller == "Detail")
+{
+    <p>
+        <strong>Return:</strong> <a asp-area="" asp-controller="Header" asp-action="Details" asp-route-id="@Model.Id"
+        class="btn btn-success">Back To Header</a>
+    </p>
+}
+else if (@Model.Controller == "Field")
+{
+    <p>
+        <strong>Return:</strong> <a asp-area="" asp-controller="Screen" asp-action="Details" asp-route-id="@Model.Id"
+        class="btn btn-success">Back To Screen</a>
+    </p>
+}
+else if (@Model.Controller == "Question")
+{
+    <p>
+        <strong>Return:</strong> <a asp-area="" asp-controller="Control" asp-action="Details" asp-route-id="@Model.Id"
+        class="btn btn-success">Back To Control</a>
+    </p>
+}
+else
+{
+    <p>
+        <strong>Return:</strong> <a asp-area="" asp-controller="@Model.Controller" asp-action=""
+        class="btn btn-success">Back To @Model.Controller</a>
+    </p>
+}
